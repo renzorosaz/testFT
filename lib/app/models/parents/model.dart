@@ -1,4 +1,6 @@
 abstract class Model {
+  String? id;
+
   int intFromJson(Map<String, dynamic> json, String attribute,
       {int defaultValue = 0}) {
     try {
