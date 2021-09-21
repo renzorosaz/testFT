@@ -10,4 +10,16 @@ A few resources to get you started if this is your first Flutter project:
 
 Steps to create a project flutter and consume GitHub API:
 
-1. Create a repo in GitHub
+1. To run this project in your local, you have to have install first Flutter.
+2. So, I recommend you this page : https://flutter.dev/docs/get-started/install
+3. When you finish the installation of Flutter and complements, you have to download this project.
+3. When you have this project clone in your local, you should :
+    1. Open with Visual Studio Code.
+    2. In your terminal, write : 
+            flutter pub get -> wait some seconds ( this command help yo tou update the libraries in your project)
+    3. You have you connect your android device and run your app:
+        There are 2 ways:
+            1. Go to main.dart  and push the " Play " button.
+            2. You can use the terminal and write : flutter run -> wait some seconds ( remember connect your device).
+
+            
