@@ -26,16 +26,20 @@ class RootControler extends GetxController {
     await refreshPage(_index);
   }
 
+  Future<void> changePage(int _index) async {
+    await changePageInRoot(_index);
+  }
+
   Future<void> refreshPage(int _index) async {
     switch (_index) {
       case 0:
         {
-          await Get.find<CommitsController>().refreshCommits();
+          //await Get.find<CommitsController>().refreshCommits();
           break;
         }
       case 1:
         {
-          await Get.find<AccountController>().refreshAccount();
+          // await Get.find<AccountController>().refreshAccount();
         }
     }
   }

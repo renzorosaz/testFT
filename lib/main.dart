@@ -14,6 +14,8 @@ void main() async {
   initServices();
 
   runApp(
-    GetMaterialApp(),
+    GetMaterialApp(
+        // initialRoute: Th,
+        ),
   );
 }
