@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:test_ftm/app/models/custom_page_model.dart';
 import 'package:test_ftm/app/modules/commits/controllers/commits_controller.dart';
 import 'package:test_ftm/app/modules/commits/views/commits_view.dart';
-import 'package:test_ftm/app/modules/profile/controllers/profile_controller.dart';
-import 'package:test_ftm/app/modules/profile/views/profile.dart';
 
 class RootControler extends GetxController {
   final currentIndex = 0.obs;
@@ -16,7 +14,7 @@ class RootControler extends GetxController {
     super.onInit();
   }
 
-  List<Widget> pages = [CommitsView(), ProfileView()];
+  List<Widget> pages = [CommitsView()];
 
   Widget get currentPage => pages[currentIndex.value];
 
