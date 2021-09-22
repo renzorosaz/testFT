@@ -7,6 +7,8 @@ void initServices() async {
   Get.log('starting services ...');
   await GetStorage.init();
   //create services github
+//await Get.putAsync(() => GlobalService().init());
+
   Get.log('All services started...');
 }
 
