@@ -22,7 +22,11 @@ class GitHubApliClient extends GetxService with ApiClient {
     return this;
   }
 
-  Future<List<Commit>> getAllCommits() async {
+  Future<List<CommitModel>> getRepos() async {
+    return [];
+  }
+
+  Future<List<CommitModel>> getAllCommits() async {
     var urlGitAllComitsFromUserAndRep =
         urlBase + "repos/" + user + repo + "commits";
 
@@ -30,14 +34,14 @@ class GitHubApliClient extends GetxService with ApiClient {
     Get.log(resp.toString());
 
     final List<dynamic> decodedData = json.decode(resp.body);
-    final List<Commit> commits = [];
+    final List<CommitModel> commits = [];
     if (decodedData.length > 0) {
-      //var dd = List<Commit>.from(decodedData.map((x) => Commit.fromJson(x)));
-      //return decodedData.map<Commit>((obj) => Commit.fromJson(obj)).toList();
-      print(decodedData[2]);
-      return decodedData
-          .map<Commit>((commits) => Commit.fromJson(commits))
-          .toList();
+      decodedData.forEach((item) {
+        final prodTemp = CommitModel.fromJson(item);
+        commits.add(prodTemp);
+      });
+      print(commits);
+      return commits;
     } else {
       throw new Exception("error");
     }

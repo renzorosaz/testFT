@@ -11,50 +11,57 @@ String commitModelToJson(CommitModel data) => json.encode(data.toJson());
 
 class CommitModel {
   CommitModel({
-    required this.sha,
-    required this.nodeId,
-    required this.commit,
-    required this.url,
-    required this.htmlUrl,
-    required this.commentsUrl,
-    required this.author,
-    required this.committer,
-    required this.parents,
+    this.sha,
+    this.nodeId,
+    this.commit,
+    this.url,
+    this.htmlUrl,
+    this.commentsUrl,
+    this.author,
+    this.committer,
+    this.parents,
   });
 
-  String sha;
-  String nodeId;
-  Commit commit;
-  String url;
-  String htmlUrl;
-  String commentsUrl;
-  CommitModelAuthor author;
-  CommitModelAuthor committer;
-  List<Parent> parents;
+  final String? sha;
+  final String? nodeId;
+  final Commit? commit;
+  final String? url;
+  final String? htmlUrl;
+  final String? commentsUrl;
+  final CommitModelAuthor? author;
+  final CommitModelAuthor? committer;
+  final List<Parent>? parents;
 
   factory CommitModel.fromJson(Map<String, dynamic> json) => CommitModel(
-        sha: json["sha"],
-        nodeId: json["node_id"],
-        commit: Commit.fromJson(json["commit"]),
-        url: json["url"],
-        htmlUrl: json["html_url"],
-        commentsUrl: json["comments_url"],
-        author: CommitModelAuthor.fromJson(json["author"]),
-        committer: CommitModelAuthor.fromJson(json["committer"]),
-        parents:
-            List<Parent>.from(json["parents"].map((x) => Parent.fromJson(x))),
+        sha: json["sha"] == null ? null : json["sha"],
+        nodeId: json["node_id"] == null ? null : json["node_id"],
+        commit: json["commit"] == null ? null : Commit.fromJson(json["commit"]),
+        url: json["url"] == null ? null : json["url"],
+        htmlUrl: json["html_url"] == null ? null : json["html_url"],
+        commentsUrl: json["comments_url"] == null ? null : json["comments_url"],
+        author: json["author"] == null
+            ? null
+            : CommitModelAuthor.fromJson(json["author"]),
+        committer: json["committer"] == null
+            ? null
+            : CommitModelAuthor.fromJson(json["committer"]),
+        parents: json["parents"] == null
+            ? null
+            : List<Parent>.from(json["parents"].map((x) => Parent.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "sha": sha,
-        "node_id": nodeId,
-        "commit": commit.toJson(),
-        "url": url,
-        "html_url": htmlUrl,
-        "comments_url": commentsUrl,
-        "author": author.toJson(),
-        "committer": committer.toJson(),
-        "parents": List<dynamic>.from(parents.map((x) => x.toJson())),
+        "sha": sha == null ? null : sha,
+        "node_id": nodeId == null ? null : nodeId,
+        "commit": commit == null ? null : commit!.toJson(),
+        "url": url == null ? null : url,
+        "html_url": htmlUrl == null ? null : htmlUrl,
+        "comments_url": commentsUrl == null ? null : commentsUrl,
+        "author": author == null ? null : author!.toJson(),
+        "committer": committer == null ? null : committer!.toJson(),
+        "parents": parents == null
+            ? null
+            : List<dynamic>.from(parents!.map((x) => x.toJson())),
       };
 }
 
@@ -80,66 +87,75 @@ class CommitModelAuthor {
     this.siteAdmin,
   });
 
-  String? login;
-  int? id;
-  String? nodeId;
-  String? avatarUrl;
-  String? gravatarId;
-  String? url;
-  String? htmlUrl;
-  String? followersUrl;
-  String? followingUrl;
-  String? gistsUrl;
-  String? starredUrl;
-  String? subscriptionsUrl;
-  String? organizationsUrl;
-  String? reposUrl;
-  String? eventsUrl;
-  String? receivedEventsUrl;
-  String? type;
-  bool? siteAdmin;
+  final String? login;
+  final int? id;
+  final String? nodeId;
+  final String? avatarUrl;
+  final String? gravatarId;
+  final String? url;
+  final String? htmlUrl;
+  final String? followersUrl;
+  final String? followingUrl;
+  final String? gistsUrl;
+  final String? starredUrl;
+  final String? subscriptionsUrl;
+  final String? organizationsUrl;
+  final String? reposUrl;
+  final String? eventsUrl;
+  final String? receivedEventsUrl;
+  final String? type;
+  final bool? siteAdmin;
 
   factory CommitModelAuthor.fromJson(Map<String, dynamic> json) =>
       CommitModelAuthor(
-        login: json["login"],
-        id: json["id"],
-        nodeId: json["node_id"],
-        avatarUrl: json["avatar_url"],
-        gravatarId: json["gravatar_id"],
-        url: json["url"],
-        htmlUrl: json["html_url"],
-        followersUrl: json["followers_url"],
-        followingUrl: json["following_url"],
-        gistsUrl: json["gists_url"],
-        starredUrl: json["starred_url"],
-        subscriptionsUrl: json["subscriptions_url"],
-        organizationsUrl: json["organizations_url"],
-        reposUrl: json["repos_url"],
-        eventsUrl: json["events_url"],
-        receivedEventsUrl: json["received_events_url"],
-        type: json["type"],
-        siteAdmin: json["site_admin"],
+        login: json["login"] == null ? null : json["login"],
+        id: json["id"] == null ? null : json["id"],
+        nodeId: json["node_id"] == null ? null : json["node_id"],
+        avatarUrl: json["avatar_url"] == null ? null : json["avatar_url"],
+        gravatarId: json["gravatar_id"] == null ? null : json["gravatar_id"],
+        url: json["url"] == null ? null : json["url"],
+        htmlUrl: json["html_url"] == null ? null : json["html_url"],
+        followersUrl:
+            json["followers_url"] == null ? null : json["followers_url"],
+        followingUrl:
+            json["following_url"] == null ? null : json["following_url"],
+        gistsUrl: json["gists_url"] == null ? null : json["gists_url"],
+        starredUrl: json["starred_url"] == null ? null : json["starred_url"],
+        subscriptionsUrl: json["subscriptions_url"] == null
+            ? null
+            : json["subscriptions_url"],
+        organizationsUrl: json["organizations_url"] == null
+            ? null
+            : json["organizations_url"],
+        reposUrl: json["repos_url"] == null ? null : json["repos_url"],
+        eventsUrl: json["events_url"] == null ? null : json["events_url"],
+        receivedEventsUrl: json["received_events_url"] == null
+            ? null
+            : json["received_events_url"],
+        type: json["type"] == null ? null : json["type"],
+        siteAdmin: json["site_admin"] == null ? null : json["site_admin"],
       );
 
   Map<String, dynamic> toJson() => {
-        "login": login,
-        "id": id,
-        "node_id": nodeId,
-        "avatar_url": avatarUrl,
-        "gravatar_id": gravatarId,
-        "url": url,
-        "html_url": htmlUrl,
-        "followers_url": followersUrl,
-        "following_url": followingUrl,
-        "gists_url": gistsUrl,
-        "starred_url": starredUrl,
-        "subscriptions_url": subscriptionsUrl,
-        "organizations_url": organizationsUrl,
-        "repos_url": reposUrl,
-        "events_url": eventsUrl,
-        "received_events_url": receivedEventsUrl,
-        "type": type,
-        "site_admin": siteAdmin,
+        "login": login == null ? null : login,
+        "id": id == null ? null : id,
+        "node_id": nodeId == null ? null : nodeId,
+        "avatar_url": avatarUrl == null ? null : avatarUrl,
+        "gravatar_id": gravatarId == null ? null : gravatarId,
+        "url": url == null ? null : url,
+        "html_url": htmlUrl == null ? null : htmlUrl,
+        "followers_url": followersUrl == null ? null : followersUrl,
+        "following_url": followingUrl == null ? null : followingUrl,
+        "gists_url": gistsUrl == null ? null : gistsUrl,
+        "starred_url": starredUrl == null ? null : starredUrl,
+        "subscriptions_url": subscriptionsUrl == null ? null : subscriptionsUrl,
+        "organizations_url": organizationsUrl == null ? null : organizationsUrl,
+        "repos_url": reposUrl == null ? null : reposUrl,
+        "events_url": eventsUrl == null ? null : eventsUrl,
+        "received_events_url":
+            receivedEventsUrl == null ? null : receivedEventsUrl,
+        "type": type == null ? null : type,
+        "site_admin": siteAdmin == null ? null : siteAdmin,
       };
 }
 
@@ -154,32 +170,39 @@ class Commit {
     this.verification,
   });
 
-  CommitAuthor? author;
-  CommitAuthor? committer;
-  String? message;
-  Tree? tree;
-  String? url;
-  int? commentCount;
-  Verification? verification;
+  final CommitAuthor? author;
+  final CommitAuthor? committer;
+  final String? message;
+  final Tree? tree;
+  final String? url;
+  final int? commentCount;
+  final Verification? verification;
 
   factory Commit.fromJson(Map<String, dynamic> json) => Commit(
-        author: CommitAuthor.fromJson(json["author"]),
-        committer: CommitAuthor.fromJson(json["committer"]),
-        message: json["message"],
-        tree: Tree.fromJson(json["tree"]),
-        url: json["url"],
-        commentCount: json["comment_count"],
-        verification: Verification.fromJson(json["verification"]),
+        author: json["author"] == null
+            ? null
+            : CommitAuthor.fromJson(json["author"]),
+        committer: json["committer"] == null
+            ? null
+            : CommitAuthor.fromJson(json["committer"]),
+        message: json["message"] == null ? null : json["message"],
+        tree: json["tree"] == null ? null : Tree.fromJson(json["tree"]),
+        url: json["url"] == null ? null : json["url"],
+        commentCount:
+            json["comment_count"] == null ? null : json["comment_count"],
+        verification: json["verification"] == null
+            ? null
+            : Verification.fromJson(json["verification"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "author": author!.toJson(),
-        "committer": committer!.toJson(),
-        "message": message,
-        "tree": tree!.toJson(),
-        "url": url,
-        "comment_count": commentCount,
-        "verification": verification!.toJson(),
+        "author": author == null ? null : author!.toJson(),
+        "committer": committer == null ? null : committer!.toJson(),
+        "message": message == null ? null : message,
+        "tree": tree == null ? null : tree!.toJson(),
+        "url": url == null ? null : url,
+        "comment_count": commentCount == null ? null : commentCount,
+        "verification": verification == null ? null : verification!.toJson(),
       };
 }
 
@@ -190,22 +213,20 @@ class CommitAuthor {
     this.date,
   });
 
-  String? name;
-  String? email;
-  DateTime? date;
+  final String? name;
+  final String? email;
+  final DateTime? date;
 
-  factory CommitAuthor.fromJson(Map<String, dynamic> json) => json == null
-      ? CommitAuthor(
-          name: json["name"],
-          email: json["email"],
-          date: DateTime.parse(json["date"]),
-        )
-      : CommitAuthor();
+  factory CommitAuthor.fromJson(Map<String, dynamic> json) => CommitAuthor(
+        name: json["name"] == null ? null : json["name"],
+        email: json["email"] == null ? null : json["email"],
+        date: json["date"] == null ? null : DateTime.parse(json["date"]),
+      );
 
   Map<String, dynamic> toJson() => {
-        "name": name,
-        "email": email,
-        "date": date!.toIso8601String(),
+        "name": name == null ? null : name,
+        "email": email == null ? null : email,
+        "date": date == null ? null : date!.toIso8601String(),
       };
 }
 
@@ -215,17 +236,17 @@ class Tree {
     this.url,
   });
 
-  String? sha;
-  String? url;
+  final String? sha;
+  final String? url;
 
   factory Tree.fromJson(Map<String, dynamic> json) => Tree(
-        sha: json["sha"],
-        url: json["url"],
+        sha: json["sha"] == null ? null : json["sha"],
+        url: json["url"] == null ? null : json["url"],
       );
 
   Map<String, dynamic> toJson() => {
-        "sha": sha,
-        "url": url,
+        "sha": sha == null ? null : sha,
+        "url": url == null ? null : url,
       };
 }
 
@@ -237,21 +258,21 @@ class Verification {
     this.payload,
   });
 
-  bool? verified;
-  String? reason;
-  dynamic signature;
-  dynamic payload;
+  final bool? verified;
+  final String? reason;
+  final dynamic signature;
+  final dynamic payload;
 
   factory Verification.fromJson(Map<String, dynamic> json) => Verification(
-        verified: json["verified"],
-        reason: json["reason"],
+        verified: json["verified"] == null ? null : json["verified"],
+        reason: json["reason"] == null ? null : json["reason"],
         signature: json["signature"],
         payload: json["payload"],
       );
 
   Map<String, dynamic> toJson() => {
-        "verified": verified,
-        "reason": reason,
+        "verified": verified == null ? null : verified,
+        "reason": reason == null ? null : reason,
         "signature": signature,
         "payload": payload,
       };
@@ -264,19 +285,19 @@ class Parent {
     this.htmlUrl,
   });
 
-  String? sha;
-  String? url;
-  String? htmlUrl;
+  final String? sha;
+  final String? url;
+  final String? htmlUrl;
 
   factory Parent.fromJson(Map<String, dynamic> json) => Parent(
-        sha: json["sha"],
-        url: json["url"],
-        htmlUrl: json["html_url"],
+        sha: json["sha"] == null ? null : json["sha"],
+        url: json["url"] == null ? null : json["url"],
+        htmlUrl: json["html_url"] == null ? null : json["html_url"],
       );
 
   Map<String, dynamic> toJson() => {
-        "sha": sha,
-        "url": url,
-        "html_url": htmlUrl,
+        "sha": sha == null ? null : sha,
+        "url": url == null ? null : url,
+        "html_url": htmlUrl == null ? null : htmlUrl,
       };
 }

@@ -12,5 +12,8 @@ class RootBinding extends Bindings {
     Get.lazyPut<CommitsController>(
       () => CommitsController(),
     );
+    Get.lazyPut<ProfileController>(
+      () => ProfileController(),
+    );
   }
 }

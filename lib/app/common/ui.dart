@@ -45,7 +45,7 @@ class Ui {
   static BoxDecoration getBoxDecotarion(
       {Color? color, double? radius, Border? border, Gradient? gradient}) {
     return BoxDecoration(
-        color: color ?? Get.theme.primaryColor,
+        color: color ?? Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(radius ?? 10)),
         boxShadow: [
           BoxShadow(

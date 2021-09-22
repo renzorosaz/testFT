@@ -40,22 +40,61 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       height: 60,
       color: widget.backgroundColor,
       child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: widget.children!.map((item) {
-            var color = item.color ?? widget.itemColor;
-            var icon = item.icon;
-            var label = item.label;
-            int index = widget.children!.indexOf(item);
-            return Text(
-              label ?? '',
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style: TextStyle(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: widget.children!.map((item) {
+          var color = item.color ?? widget.itemColor;
+          var icon = item.icon;
+          var label = item.label;
+          int index = widget.children!.indexOf(item);
+          return GestureDetector(
+            onTap: () {
+              _changeIndex(index);
+            },
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 200),
+              width: widget.currentIndex == index
+                  ? MediaQuery.of(context).size.width /
+                          widget.children!.length +
+                      20
+                  : 50,
+              padding: EdgeInsets.only(left: 10, right: 10),
+              margin: EdgeInsets.only(top: 10, bottom: 10),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
                   color: widget.currentIndex == index
-                      ? color
-                      : color.withOpacity(0.5)),
-            );
-          }).toList()),
+                      ? color.withOpacity(0.2)
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Icon(
+                    icon,
+                    size: 24,
+                    color: widget.currentIndex == index
+                        ? color
+                        : color.withOpacity(0.5),
+                  ),
+                  widget.currentIndex == index
+                      ? Expanded(
+                          flex: 2,
+                          child: Text(
+                            label ?? '',
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: widget.currentIndex == index
+                                    ? color
+                                    : color.withOpacity(0.5)),
+                          ),
+                        )
+                      : Container()
+                ],
+              ),
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }

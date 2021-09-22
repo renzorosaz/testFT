@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:test_ftm/app/common/custom_trace.dart';
-import 'package:test_ftm/app/services/global_services.dart';
 
 mixin ApiClient {
   //final globalService = Get.find<GlobalService>();

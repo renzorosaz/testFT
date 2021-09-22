@@ -7,7 +7,7 @@ import 'package:test_ftm/app/repositories/commits_repository.dart';
 class CommitsController extends GetxController {
   CommitsRepository? _commitsRepository;
 
-  final commits = <Commit>[].obs;
+  final commits = <CommitModel>[].obs;
   final page = 0.obs;
   final isLoading = true.obs;
   final isDone = false.obs;

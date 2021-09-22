@@ -16,7 +16,7 @@ class RootControler extends GetxController {
     super.onInit();
   }
 
-  List<Widget> pages = [CommitsView()];
+  List<Widget> pages = [CommitsView(), ProfileView()];
 
   Widget get currentPage => pages[currentIndex.value];
 
@@ -35,6 +35,11 @@ class RootControler extends GetxController {
       case 0:
         {
           await Get.find<CommitsController>().refreshCommits();
+          break;
+        }
+      case 1:
+        {
+          await Get.find<ProfileController>();
           break;
         }
     }
