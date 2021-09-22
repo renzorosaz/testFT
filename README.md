@@ -8,8 +8,9 @@ This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
-IMPORTANT: In this project I tried to use GetX, but finally I added FutureBuilder to show in IU
-Note: If you run a lot the project could be possible doesn't work because your ip is exceeding the number of requests allowed'
+IMPORTANT: In this project I tried to use GetX, but finally I added FutureBuilder to show Commits in IU (CommitView).
+
+Note: if you run the project several times the project could be possible doesn't work because your ip is exceeding the number of requests allowed'
 
 Steps to create a project flutter and consume GitHub API:
 
