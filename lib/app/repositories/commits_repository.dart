@@ -10,5 +10,7 @@ class CommitsRepository {
     this._gitHubApiClient = Get.find<GitHubApliClient>();
   }
 
-  Future<List<Commit>> getAllCommits() {}
+  Future<List<Commit>> getAllCommits() {
+    return _gitHubApiClient.getAllCommits();
+  }
 }
