@@ -21,10 +21,15 @@ class CommitsController extends GetxController {
 
   Future refreshCommits({bool? showMessage}) async {
     await getAllCommits();
-    if (showMessage == true) {}
+    if (showMessage == true) {
+      Get.showSnackbar(Ui.SuccessSnackBar(
+          message: "List of commits refreshed successfully"));
+    }
   }
 
   Future getAllCommits() async {
-    try {} catch (e) {}
+    try {
+      commits.assignAll(await _commitsRepository!.getAllCommits());
+    } catch (e) {}
   }
 }

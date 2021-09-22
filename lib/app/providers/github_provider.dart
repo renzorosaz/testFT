@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:test_ftm/app/data/network_util.dart';
 import 'package:test_ftm/app/models/commit_model.dart';
+import 'package:flutter/foundation.dart' as foundation;
 
 import 'api_provider.dart';
 
@@ -14,9 +15,17 @@ class GitHubApliClient extends GetxService with ApiClient {
 
   //https://api.github.com/repos/renzorosaz/testFT/commits
 
+  GitHubApliClient() {
+    this.baseUrl = urlBase;
+  }
+
+  Future<GitHubApliClient> init() async {
+    return this;
+  }
+
   Future<List<Commit>> getAllCommits() async {
     var urlGitAllComitsFromUserAndRep =
-        urlBase + "repos" + user + repo + "commits";
+        urlBase + "repos/" + user + repo + "commits";
 
     final resp = await _netUtil.get(urlGitAllComitsFromUserAndRep);
     final List<dynamic> decodedData = json.decode(resp.body);
