@@ -30,7 +30,9 @@ class GitHubApliClient extends GetxService with ApiClient {
     var urlGitAllComitsFromUserAndRep =
         urlBase + "repos/" + user + repo + "commits";
 
-    final resp = await _netUtil.get(urlGitAllComitsFromUserAndRep);
+    final resp = await _netUtil.get(urlGitAllComitsFromUserAndRep,
+        headers: {"Authorization": "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"});
+
     Get.log(resp.toString());
 
     final List<dynamic> decodedData = json.decode(resp.body);

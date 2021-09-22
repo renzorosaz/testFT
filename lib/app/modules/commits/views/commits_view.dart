@@ -34,7 +34,7 @@ class CommitsView extends GetView<CommitsController> {
                 return CircularProgressIndicator();
               } else if (snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.hasError) {
-                  return const Text('Error');
+                  return Center(child: const Text('Error'));
                 } else if (snapshot.hasData) {
                   return ListView.builder(
                       itemCount: listCom!.length,
@@ -47,7 +47,8 @@ class CommitsView extends GetView<CommitsController> {
                   return const Text('Empty data');
                 }
               } else {
-                return Text('State: ${snapshot.connectionState}');
+                return Center(
+                    child: Text('State: ${snapshot.connectionState}'));
               }
             },
           ),

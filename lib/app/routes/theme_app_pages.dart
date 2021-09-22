@@ -1,8 +1,6 @@
 import 'package:get/get.dart' show GetPage;
 import 'package:test_ftm/app/modules/commits/binding/commits_binding.dart';
 import 'package:test_ftm/app/modules/commits/views/commits_view.dart';
-import 'package:test_ftm/app/modules/profile/binding/profile_binding.dart';
-import 'package:test_ftm/app/modules/profile/views/profile.dart';
 import 'package:test_ftm/app/modules/root/bindings/root_binding.dart';
 import 'package:test_ftm/app/modules/root/views/root_view.dart';
 
@@ -18,9 +16,5 @@ class ThemeAppPages {
         name: Routes.COMMITS,
         page: () => CommitsView(),
         binding: CommitsBinding()),
-    GetPage(
-        name: Routes.PROFILE,
-        page: () => ProfileView(),
-        binding: ProfileBinding()),
   ];
 }

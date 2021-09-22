@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:test_ftm/app/modules/commits/controllers/commits_controller.dart';
-import 'package:test_ftm/app/modules/profile/controllers/profile_controller.dart';
 import 'package:test_ftm/app/modules/root/controllers/root_controller.dart';
 
 class RootBinding extends Bindings {
@@ -11,9 +10,6 @@ class RootBinding extends Bindings {
     );
     Get.lazyPut<CommitsController>(
       () => CommitsController(),
-    );
-    Get.lazyPut<ProfileController>(
-      () => ProfileController(),
     );
   }
 }

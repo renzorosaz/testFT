@@ -37,11 +37,6 @@ class RootControler extends GetxController {
           await Get.find<CommitsController>().refreshCommits();
           break;
         }
-      case 1:
-        {
-          await Get.find<ProfileController>();
-          break;
-        }
     }
   }
 }
