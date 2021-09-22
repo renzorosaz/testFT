@@ -192,18 +192,15 @@ class CommitAuthor {
 
   String? name;
   String? email;
-  DateTime? date;
+  String? date;
 
   factory CommitAuthor.fromJson(Map<String, dynamic> json) => CommitAuthor(
-        name: json["name"],
-        email: json["email"],
-        date: DateTime.parse(json["date"]),
-      );
+      name: json["name"], email: json["email"], date: json["date"]);
 
   Map<String, dynamic> toJson() => {
         "name": name,
         "email": email,
-        "date": date!.toIso8601String(),
+        "date": date!,
       };
 }
 
@@ -237,8 +234,8 @@ class Verification {
 
   bool? verified;
   String? reason;
-  dynamic? signature;
-  dynamic? payload;
+  dynamic signature;
+  dynamic payload;
 
   factory Verification.fromJson(Map<String, dynamic> json) => Verification(
         verified: json["verified"],

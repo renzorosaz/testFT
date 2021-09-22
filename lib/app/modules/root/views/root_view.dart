@@ -18,9 +18,7 @@ class RootView extends GetView<RootControler> {
           },
           children: [
             CustonBottomNavigationItem(
-                icon: Icons.compare_arrows_outlined, label: "Commits"),
-            CustonBottomNavigationItem(
-                icon: Icons.person_rounded, label: "Account")
+                icon: Icons.compare_arrows_outlined, label: "Commits")
           ],
         ),
       );

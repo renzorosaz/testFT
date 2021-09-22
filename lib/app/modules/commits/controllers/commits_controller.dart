@@ -8,6 +8,9 @@ class CommitsController extends GetxController {
   CommitsRepository? _commitsRepository;
 
   final commits = <Commit>[].obs;
+  final page = 0.obs;
+  final isLoading = true.obs;
+  final isDone = false.obs;
 
   CommitsController() {
     _commitsRepository = new CommitsRepository();
@@ -19,7 +22,7 @@ class CommitsController extends GetxController {
     super.onInit();
   }
 
-  Future refreshCommits({bool? showMessage}) async {
+  Future refreshCommits({bool? showMessage = true}) async {
     await getAllCommits();
     if (showMessage == true) {
       Get.showSnackbar(Ui.SuccessSnackBar(
@@ -30,6 +33,8 @@ class CommitsController extends GetxController {
   Future getAllCommits() async {
     try {
       commits.assignAll(await _commitsRepository!.getAllCommits());
-    } catch (e) {}
+    } catch (e) {
+      Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
+    }
   }
 }

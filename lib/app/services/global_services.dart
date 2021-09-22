@@ -4,8 +4,9 @@ import 'package:test_ftm/app/models/global_model.dart';
 class GlobalService extends GetxService {
   final global = Global().obs;
 
-  Future<GlobalService> init() async {
-    // create global jsn an return
-    return this;
+  Future<String> init() async {
+    String urlBase = "https://api.github.com/";
+    var response = urlBase;
+    return response;
   }
 }

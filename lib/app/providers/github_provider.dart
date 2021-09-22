@@ -13,13 +13,12 @@ class GitHubApliClient extends GetxService with ApiClient {
   String user = "renzorosaz/";
   String repo = "testFT/";
 
-  //https://api.github.com/repos/renzorosaz/testFT/commits
-
   GitHubApliClient() {
-    this.baseUrl = urlBase;
+    this.urlBase = urlBase;
   }
 
   Future<GitHubApliClient> init() async {
+    this.urlBase = urlBase;
     return this;
   }
 
@@ -28,14 +27,17 @@ class GitHubApliClient extends GetxService with ApiClient {
         urlBase + "repos/" + user + repo + "commits";
 
     final resp = await _netUtil.get(urlGitAllComitsFromUserAndRep);
+    Get.log(resp.toString());
+
     final List<dynamic> decodedData = json.decode(resp.body);
     final List<Commit> commits = [];
     if (decodedData == null) return [];
-    decodedData.forEach((commit) {
-      final prodTemp = Commit.fromJson(commit);
-      commits.add(prodTemp);
-    });
-    print(commits);
-    return commits;
+    if (decodedData.length > 0) {
+      //var dd = List<Commit>.from(decodedData.map((x) => Commit.fromJson(x)));
+      //return decodedData.map<Commit>((obj) => Commit.fromJson(obj)).toList();
+      return decodedData.map<Commit>((obj) => Commit.fromJson(obj)).toList();
+    } else {
+      throw new Exception("error");
+    }
   }
 }

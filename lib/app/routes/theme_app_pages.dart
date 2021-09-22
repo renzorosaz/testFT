@@ -1,5 +1,5 @@
 import 'package:get/get.dart' show GetPage;
-import 'package:test_ftm/app/modules/commits/binding/commits_controller.dart';
+import 'package:test_ftm/app/modules/commits/binding/commits_binding.dart';
 import 'package:test_ftm/app/modules/commits/views/commits_view.dart';
 import 'package:test_ftm/app/modules/profile/binding/profile_binding.dart';
 import 'package:test_ftm/app/modules/profile/views/profile.dart';

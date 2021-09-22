@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Ui {
-  static GetBar SuccessSnackBar({String title = 'Success', String? message}) {
+  static GetBar SuccessSnackBar(
+      {String title = 'Success', required String message}) {
     Get.log("[$title] $message");
     return GetBar(
       titleText: Text(title,
@@ -38,5 +40,21 @@ class Ui {
       borderRadius: 8,
       duration: Duration(seconds: 5),
     );
+  }
+
+  static BoxDecoration getBoxDecotarion(
+      {Color? color, double? radius, Border? border, Gradient? gradient}) {
+    return BoxDecoration(
+        color: color ?? Get.theme.primaryColor,
+        borderRadius: BorderRadius.all(Radius.circular(radius ?? 10)),
+        boxShadow: [
+          BoxShadow(
+              color: Get.theme.focusColor.withOpacity(0.1),
+              blurRadius: 10,
+              offset: Offset(0, 5)),
+        ],
+        border:
+            border ?? Border.all(color: Get.theme.focusColor.withOpacity(0.05)),
+        gradient: gradient);
   }
 }
