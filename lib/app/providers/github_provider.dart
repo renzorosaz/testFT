@@ -31,11 +31,13 @@ class GitHubApliClient extends GetxService with ApiClient {
 
     final List<dynamic> decodedData = json.decode(resp.body);
     final List<Commit> commits = [];
-    if (decodedData == null) return [];
     if (decodedData.length > 0) {
       //var dd = List<Commit>.from(decodedData.map((x) => Commit.fromJson(x)));
       //return decodedData.map<Commit>((obj) => Commit.fromJson(obj)).toList();
-      return decodedData.map<Commit>((obj) => Commit.fromJson(obj)).toList();
+      print(decodedData[2]);
+      return decodedData
+          .map<Commit>((commits) => Commit.fromJson(commits))
+          .toList();
     } else {
       throw new Exception("error");
     }

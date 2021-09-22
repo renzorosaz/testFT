@@ -16,4 +16,18 @@ abstract class Model {
           'Error while parsing ' + attribute + '[' + e.toString() + ']');
     }
   }
+
+  DateTime? dateFromJson(Map<String, dynamic> json, String attribute,
+      {DateTime? defaultValue}) {
+    try {
+      return json != null
+          ? json[attribute] != null
+              ? DateTime.parse(json[attribute]).toLocal()
+              : defaultValue
+          : defaultValue;
+    } catch (e) {
+      throw Exception(
+          'Error while parsing ' + attribute + '[' + e.toString() + ']');
+    }
+  }
 }

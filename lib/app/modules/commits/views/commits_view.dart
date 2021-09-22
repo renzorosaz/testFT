@@ -19,39 +19,34 @@ class CommitsView extends GetView<CommitsController> {
           elevation: 0,
           automaticallyImplyLeading: false,
         ),
-        body: RefreshIndicator(
-          onRefresh: () async {
-            GitHubApliClient().getAllCommits();
-          },
-          child: Container(
-              child: FutureBuilder<List<Commit>>(
-            initialData: [],
-            future: GitHubApliClient().getAllCommits(),
-            builder: (
-              _,
-              snapshot,
-            ) {
-              List<Commit>? listCom = snapshot.data;
-              print(snapshot.connectionState);
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
-              } else if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasError) {
-                  return const Text('Error');
-                } else if (snapshot.hasData) {
-                  return ListView.builder(
-                      itemCount: listCom!.length,
-                      itemBuilder: (_, i) {
-                        return Text(listCom[i].toString());
-                      });
-                } else {
-                  return const Text('Empty data');
-                }
+        body: Container(
+            child: FutureBuilder<List<Commit>>(
+          initialData: [],
+          future: GitHubApliClient().getAllCommits(),
+          builder: (
+            _,
+            snapshot,
+          ) {
+            List<Commit>? listCom = snapshot.data;
+            print(snapshot.connectionState);
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            } else if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.hasError) {
+                return const Text('Error');
+              } else if (snapshot.hasData) {
+                return ListView.builder(
+                    itemCount: listCom!.length,
+                    itemBuilder: (_, i) {
+                      return Text(listCom[i].committer.toString());
+                    });
               } else {
-                return Text('State: ${snapshot.connectionState}');
+                return const Text('Empty data');
               }
-            },
-          )),
-        ));
+            } else {
+              return Text('State: ${snapshot.connectionState}');
+            }
+          },
+        )));
   }
 }

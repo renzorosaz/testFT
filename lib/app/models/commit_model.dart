@@ -11,26 +11,26 @@ String commitModelToJson(CommitModel data) => json.encode(data.toJson());
 
 class CommitModel {
   CommitModel({
-    this.sha,
-    this.nodeId,
-    this.commit,
-    this.url,
-    this.htmlUrl,
-    this.commentsUrl,
-    this.author,
-    this.committer,
-    this.parents,
+    required this.sha,
+    required this.nodeId,
+    required this.commit,
+    required this.url,
+    required this.htmlUrl,
+    required this.commentsUrl,
+    required this.author,
+    required this.committer,
+    required this.parents,
   });
 
-  String? sha;
-  String? nodeId;
-  Commit? commit;
-  String? url;
-  String? htmlUrl;
-  String? commentsUrl;
-  CommitModelAuthor? author;
-  CommitModelAuthor? committer;
-  List<Parent>? parents;
+  String sha;
+  String nodeId;
+  Commit commit;
+  String url;
+  String htmlUrl;
+  String commentsUrl;
+  CommitModelAuthor author;
+  CommitModelAuthor committer;
+  List<Parent> parents;
 
   factory CommitModel.fromJson(Map<String, dynamic> json) => CommitModel(
         sha: json["sha"],
@@ -48,13 +48,13 @@ class CommitModel {
   Map<String, dynamic> toJson() => {
         "sha": sha,
         "node_id": nodeId,
-        "commit": commit!.toJson(),
+        "commit": commit.toJson(),
         "url": url,
         "html_url": htmlUrl,
         "comments_url": commentsUrl,
-        "author": author!.toJson(),
-        "committer": committer!.toJson(),
-        "parents": List<dynamic>.from(parents!.map((x) => x.toJson())),
+        "author": author.toJson(),
+        "committer": committer.toJson(),
+        "parents": List<dynamic>.from(parents.map((x) => x.toJson())),
       };
 }
 
@@ -192,15 +192,20 @@ class CommitAuthor {
 
   String? name;
   String? email;
-  String? date;
+  DateTime? date;
 
-  factory CommitAuthor.fromJson(Map<String, dynamic> json) => CommitAuthor(
-      name: json["name"], email: json["email"], date: json["date"]);
+  factory CommitAuthor.fromJson(Map<String, dynamic> json) => json == null
+      ? CommitAuthor(
+          name: json["name"],
+          email: json["email"],
+          date: DateTime.parse(json["date"]),
+        )
+      : CommitAuthor();
 
   Map<String, dynamic> toJson() => {
         "name": name,
         "email": email,
-        "date": date!,
+        "date": date!.toIso8601String(),
       };
 }
 
