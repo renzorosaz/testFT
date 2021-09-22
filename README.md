@@ -8,6 +8,9 @@ This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
+IMPORTANT: In this project I tried to use GetX, but finally I added FutureBuilder to show in IU
+Note: If you run a lot the project could be possible doesn't work because your ip is exceeding the number of requests allowed'
+
 Steps to create a project flutter and consume GitHub API:
 
 1. To run this project in your local, you have to have install first Flutter.
@@ -18,8 +21,7 @@ Steps to create a project flutter and consume GitHub API:
     2. In your terminal, write : 
             flutter pub get -> wait some seconds ( this command help yo tou update the libraries in your project)
     3. You have you connect your android device and run your app:
-        There are 2 ways:
-            1. Go to main.dart  and push the " Play " button.
-            2. You can use the terminal and write : flutter run -> wait some seconds ( remember connect your device).
+         You can use the terminal and write : 
+                    flutter run --debug --no-sound-null-safety
 
-            
+          

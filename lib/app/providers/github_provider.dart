@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:test_ftm/app/data/network_util.dart';
 import 'package:test_ftm/app/models/commit_model.dart';
 import 'package:flutter/foundation.dart' as foundation;
+import 'package:http/http.dart' as http;
 
 import 'api_provider.dart';
 
@@ -30,8 +31,11 @@ class GitHubApliClient extends GetxService with ApiClient {
     var urlGitAllComitsFromUserAndRep =
         urlBase + "repos/" + user + repo + "commits";
 
-    final resp = await _netUtil.get(urlGitAllComitsFromUserAndRep,
-        headers: {"Authorization": "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"});
+    final resp =
+        await http.get(Uri.parse(urlGitAllComitsFromUserAndRep), headers: {
+      'Authorization': "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",
+      'Accept': "application/vnd.github.v3+json"
+    });
 
     Get.log(resp.toString());
 

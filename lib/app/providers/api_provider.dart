@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:test_ftm/app/common/custom_trace.dart';
 
 mixin ApiClient {
-  //final globalService = Get.find<GlobalService>();
   String urlBase = "https://api.github.com/";
 
   String getApiBaseUrl(String path) {
