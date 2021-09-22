@@ -10,7 +10,7 @@ A few resources to get you started if this is your first Flutter project:
 
 IMPORTANT: In this project I tried to use GetX, but finally I added FutureBuilder to show Commits in IU (CommitView).
 
-Note: if you run the project several times the project could be possible doesn't work because your ip is exceeding the number of requests allowed'
+Note: if you run the project several times the project, could be possibly doesn't work because your ip is exceeding the number of requests allowed '
 
 Steps to create a project flutter and consume GitHub API:
 
